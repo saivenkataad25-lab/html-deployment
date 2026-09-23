@@ -1,0 +1,21 @@
+@if (authService.isAuthenticated()) {
+<header class="app-header">
+  <div class="header-inner">
+    <h1 class="brand"><a routerLink="/home"><span class="brand-mark">✦</span> Hello, zomato</a></h1>
+
+    <nav aria-label="Main navigation">
+      <a routerLink="/home" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Home</a>
+      <a routerLink="/about" routerLinkActive="active">About</a>
+      <a routerLink="/services" routerLinkActive="active">Services</a>
+      <a class="login-link" routerLink="/auth" [queryParams]="{ mode: 'login' }">Log in</a>
+      <a class="signup-button" routerLink="/auth" [queryParams]="{ mode: 'signup' }">Sign up</a>
+      <a class="nav-cta" routerLink="/contact-us">Let's talk <span>↗</span></a>
+      <button class="logout-button" type="button" (click)="authService.logout()">Log out</button>
+    </nav>
+  </div>
+</header>
+}
+
+<main class="app-content">
+  <router-outlet></router-outlet>
+</main>

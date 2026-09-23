@@ -1,0 +1,12 @@
+.inner-page { margin: 0 auto; max-width: 1180px; padding: 6rem 1.5rem; }
+.inner-page h1 { max-width: 720px; }
+.inner-page h1 em { color: var(--orange); font-style: normal; }
+.service-grid { display: grid; gap: 1.2rem; grid-template-columns: repeat(3, 1fr); margin-top: 4rem; }
+article { background: white; border: 1px solid var(--line); border-radius: 24px; padding: 2rem; transition: transform .2s, box-shadow .2s; }
+article:hover { box-shadow: 0 18px 40px rgba(86,45,28,.1); transform: translateY(-6px); }
+.icon { align-items: center; background: var(--peach); border-radius: 50%; color: var(--orange); display: flex; font-size: 1.7rem; height: 52px; justify-content: center; width: 52px; }
+article h2 { font-family: 'Playfair Display', serif; font-size: 1.8rem; margin: 2rem 0 .75rem; }
+article p { color: var(--muted); line-height: 1.6; min-height: 76px; }
+article a { color: var(--orange); font-size: .85rem; font-weight: 700; }
+article a span { margin-left: .3rem; }
+@media (max-width: 700px) { .service-grid { grid-template-columns: 1fr; } }

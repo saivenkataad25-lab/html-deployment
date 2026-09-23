@@ -1,0 +1,12 @@
+.inner-page { margin: 0 auto; max-width: 1180px; padding: 6rem 1.5rem; }
+.page-intro { border-bottom: 1px solid var(--line); padding-bottom: 4rem; }
+.page-intro h1 { max-width: 700px; }
+.page-intro em { color: var(--orange); font-style: normal; }
+.about-content { display: grid; gap: 5rem; grid-template-columns: 1fr 1fr; padding: 4rem 0; }
+.about-content > p { color: var(--muted); font-size: 1.2rem; line-height: 1.8; max-width: 520px; }
+.stat-grid { display: grid; gap: 1rem; grid-template-columns: repeat(3, 1fr); }
+.stat-grid div { background: var(--peach); border-radius: 18px; padding: 1.25rem; }
+.stat-grid strong, .stat-grid span { display: block; }
+.stat-grid strong { color: var(--orange); font-family: 'Playfair Display', serif; font-size: 2rem; }
+.stat-grid span { color: var(--muted); font-size: .75rem; margin-top: .35rem; }
+@media (max-width: 700px) { .about-content { gap: 2rem; grid-template-columns: 1fr; } }

@@ -1,0 +1,66 @@
+<section class="auth-page">
+  <div class="auth-art">
+    <span class="art-sparkle">✦</span>
+    <p class="eyebrow">Welcome to the table</p>
+    <h1>Good food is better with <em>good company.</em></h1>
+    <p>Save your favourite places, get inspired, and make every meal memorable.</p>
+    <div class="art-note">“The best memories are made around the table.”</div>
+  </div>
+
+  <div class="auth-card">
+    <div class="auth-tabs" role="tablist" aria-label="Account access">
+      <button type="button" [class.selected]="mode === 'login'" (click)="setMode('login')">Log in</button>
+      <button type="button" [class.selected]="mode === 'signup'" (click)="setMode('signup')">Sign up</button>
+    </div>
+
+    @if (mode === 'login') {
+      <p class="eyebrow">Welcome back</p>
+      <h2>Log in to your account</h2>
+      <p class="form-intro">Pick up where you left off.</p>
+    } @else {
+      <p class="eyebrow">Join the community</p>
+      <h2>Create your account</h2>
+      <p class="form-intro">Your next favourite meal is waiting.</p>
+    }
+
+    @if (errorMessage) {
+      <p class="auth-error" role="alert">{{ errorMessage }}</p>
+    }
+    <form #authForm="ngForm" (ngSubmit)="submit(authForm)">
+      @if (mode === 'signup') {
+        <label for="name">Your name</label>
+        <input id="name" name="name" type="text" placeholder="Jane Doe" required
+          ngModel #name="ngModel" [attr.aria-invalid]="name.invalid && name.touched">
+        @if (name.invalid && name.touched) {
+          <small class="field-error">Please enter your name.</small>
+        }
+      }
+      <label for="email">Email address</label>
+      <input id="email" name="email" type="email" placeholder="jane@example.com" required email
+        ngModel #email="ngModel" [attr.aria-invalid]="email.invalid && email.touched">
+      @if (email.invalid && email.touched) {
+        <small class="field-error">Enter a valid email address.</small>
+      }
+      <label for="password">Password</label>
+      <input id="password" name="password" type="password" placeholder="At least 8 characters"
+        required minlength="8" ngModel #password="ngModel"
+        [attr.aria-invalid]="password.invalid && password.touched">
+      @if (password.invalid && password.touched) {
+        <small class="field-error">Password must be at least 8 characters.</small>
+      }
+      @if (mode === 'login') {
+        <a class="forgot-link" href="#">Forgot password?</a>
+      }
+      <button class="submit-button" type="submit" [disabled]="authForm.invalid">
+        {{ mode === 'login' ? 'Log in' : 'Create account' }} <span>↗</span>
+      </button>
+    </form>
+
+    <p class="switch-copy">
+      {{ mode === 'login' ? 'New to Zomato?' : 'Already have an account?' }}
+      <button type="button" (click)="setMode(mode === 'login' ? 'signup' : 'login')">
+        {{ mode === 'login' ? 'Sign up' : 'Log in' }}
+      </button>
+    </p>
+  </div>
+</section>

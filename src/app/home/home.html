@@ -1,0 +1,38 @@
+<section class="home-page">
+  <div class="hero-copy">
+    <p class="eyebrow">Good food · Good mood</p>
+    <h1>Find your next <em>delicious</em> moment.</h1>
+    <p class="hero-text">From hidden gems to neighbourhood favourites, discover food that makes every day taste better.</p>
+    <div class="hero-actions">
+      <a class="primary-button" routerLink="/services">Explore our services <span>↗</span></a>
+      <a class="text-link" routerLink="/about">Why Zomato? <span>→</span></a>
+    </div>
+  </div>
+  <div class="food-carousel" aria-label="Featured food">
+    <div class="carousel-track">
+      @for (slide of slides; track slide.title; let index = $index) {
+        <article class="carousel-slide" [class.active]="index === currentSlide">
+          <img [src]="slide.image" [alt]="slide.alt">
+          <div class="slide-overlay">
+            <span class="slide-count">0{{ index + 1 }} / 0{{ slides.length }}</span>
+            <h2>{{ slide.title }}</h2>
+            <p>{{ slide.description }}</p>
+          </div>
+        </article>
+      }
+    </div>
+    <div class="carousel-controls">
+      <button type="button" class="arrow-button" aria-label="Previous slide" (click)="previousSlide()">←</button>
+      <div class="carousel-dots">
+        @for (slide of slides; track slide.title; let index = $index) {
+          <button type="button" [class.selected]="index === currentSlide" [attr.aria-label]="'Go to slide ' + (index + 1)" (click)="selectSlide(index)"></button>
+        }
+      </div>
+      <button type="button" class="arrow-button" aria-label="Next slide" (click)="nextSlide()">→</button>
+    </div>
+  </div>
+</section>
+
+<section class="home-strip">
+  <span>Curated for curious foodies</span><span>✦</span><span>Made for every craving</span><span>✦</span><span>Always worth the detour</span>
+</section>
